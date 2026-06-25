@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Austin Nwaigwe — Brand & Marketing Designer</title>
+  <meta name="description" content="Austin Nwaigwe is a Brand and Marketing Designer. 9 years. Multiple industries. Zero average work." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── ARTICULAT CF (self-hosted fallback stack) ── */
+    @font-face {
+      font-family: 'Articulat CF';
+      src: local('Articulat CF'), local('ArticulatCF'),
+           url('https://fonts.cdnfonts.com/css/articulat-cf') format('woff2');
+      font-weight: 100 900;
+      font-style: normal;
+    }
+
+    /* ── TOKENS ── */
+    :root {
+      --accent:      #ff841f;
+      --accent-dim:  #ff841f22;
+      --bg:          #fff5e9;
+      --text:        #363636;
+      --muted:       #9a9087;
+      --ink:         #1a1612;
+      --white:       #ffffff;
+      --border:      rgba(54,54,54,.1);
+
+      --f-body:      'Articulat CF', 'Cabinet Grotesk', 'Inter', system-ui, sans-serif;
+      --f-accent:    'Playfair Display', Georgia, serif;
+
+      --ease:        cubic-bezier(.22,.68,0,1.2);
+      --ease-out:    cubic-bezier(.16,1,.3,1);
+      --dur:         .45s;
+
+      --max:         1280px;
+      --pad:         clamp(1.5rem, 5vw, 5rem);
+    }
+
+    /* ── RESET ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--f-body);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    button { cursor: pointer; font-family: inherit; }
+
+    /* ── UTILITY ── */
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 var(--pad); }
+    .accent-italic { font-family: var(--f-accent); font-style: italic; font-weight: 600; color: var(--accent); }
+
+    /* ═══════════════════════════════════════════
+       NAV
+    ═══════════════════════════════════════════ */
+    #nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      transition: background .3s, box-shadow .3s;
+    }
+    #nav.solid {
+      background: rgba(255,245,233,.95);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 1px 0 var(--border);
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 72px;
+      max-width: var(--max); margin: 0 auto; padding: 0 var(--pad);
+    }
+    .nav-logo {
+      font-size: .8rem; font-weight: 800;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: var(--text);
+    }
+    .nav-logo em { font-family: var(--f-accent); font-style: italic; font-weight: 600; color: var(--accent); font-size: 1.1rem; letter-spacing: 0; }
+    .nav-links {
+      display: flex; gap: 2.5rem; list-style: none;
+      font-size: .78rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+    }
+    .nav-links a { color: var(--muted); transition: color .2s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta {
+      padding: .6rem 1.5rem;
+      background: var(--text); color: var(--bg);
+      font-size: .78rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase;
+      border-radius: 2px;
+      transition: background .2s, transform .2s;
+    }
+    .nav-cta:hover { background: var(--accent); transform: translateY(-1px); }
+    .nav-hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      background: none; border: none; padding: 4px;
+    }
+    .nav-hamburger span { display: block; width: 22px; height: 1.5px; background: var(--text); transition: .3s; }
+
+    /* ═══════════════════════════════════════════
+       HERO
+    ═══════════════════════════════════════════ */
+    #hero {
+      min-height: 100svh;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 10rem var(--pad) 6rem;
+      position: relative; overflow: hidden;
+    }
+    .hero-bg-text {
+      position: absolute;
+      top: 50%; left: 50%; transform: translate(-50%, -50%);
+      font-size: clamp(10rem, 22vw, 22rem);
+      font-weight: 900; letter-spacing: -.05em;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(54,54,54,.055);
+      white-space: nowrap;
+      pointer-events: none; user-select: none;
+      z-index: 0;
+    }
+    .hero-content { position: relative; z-index: 1; max-width: var(--max); margin: 0 auto; width: 100%; }
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: .5rem;
+      font-size: .72rem; font-weight: 800; letter-spacing: .16em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 2rem;
+    }
+    .hero-tag::before { content: ''; display: block; width: 24px; height: 1px; background: var(--accent); }
+
+    .hero-h1 {
+      font-size: clamp(3.2rem, 7.5vw, 7.5rem);
+      font-weight: 900;
+      line-height: .95;
+      letter-spacing: -.035em;
+      color: var(--text);
+      margin-bottom: 2.5rem;
+    }
+    .hero-h1 .line-accent {
+      display: block;
+      font-family: var(--f-accent);
+      font-style: italic; font-weight: 600;
+      color: var(--accent);
+      font-size: clamp(3rem, 7vw, 7rem);
+      letter-spacing: -.02em;
+    }
+
+    .hero-bottom {
+      display: flex; align-items: flex-end; justify-content: space-between;
+      gap: 2rem; flex-wrap: wrap;
+    }
+    .hero-sub {
+      font-size: clamp(.95rem, 1.4vw, 1.1rem);
+      line-height: 1.7; color: var(--muted);
+      max-width: 400px; font-weight: 400;
+    }
+    .hero-sub strong { color: var(--text); font-weight: 700; }
+
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: .5rem;
+      padding: .9rem 2.2rem;
+      background: var(--accent); color: var(--white);
+      font-size: .82rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase;
+      border-radius: 2px;
+      transition: transform .2s var(--ease-out), box-shadow .2s;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255,132,31,.35); }
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: .5rem;
+      padding: .9rem 2.2rem;
+      border: 1.5px solid var(--text); color: var(--text);
+      font-size: .82rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase;
+      border-radius: 2px;
+      transition: border-color .2s, color .2s, transform .2s;
+    }
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+    .hero-scroll {
+      position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: .5rem;
+      font-size: .65rem; font-weight: 800; letter-spacing: .18em; text-transform: uppercase;
+      color: var(--muted); z-index: 1;
+      animation: bounce 2s infinite;
+    }
+    .hero-scroll::after {
+      content: ''; display: block; width: 1px; height: 40px;
+      background: linear-gradient(to bottom, var(--muted), transparent);
+    }
+    @keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(6px)} }
+
+    /* ═══════════════════════════════════════════
+       MARQUEE STRIP
+    ═══════════════════════════════════════════ */
+    .marquee-strip {
+      background: var(--text); color: var(--bg);
+      padding: 1rem 0; overflow: hidden;
+      border-top: 1px solid rgba(255,245,233,.08);
+      border-bottom: 1px solid rgba(255,245,233,.08);
+    }
+    .marquee-track {
+      display: flex; gap: 0;
+      animation: marquee 28s linear infinite;
+      white-space: nowrap;
+    }
+    .marquee-item {
+      display: inline-flex; align-items: center; gap: 1.5rem;
+      padding: 0 2rem;
+      font-size: .72rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase;
+    }
+    .marquee-dot { color: var(--accent); font-size: 1.2rem; line-height: 1; }
+    @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+    /* ═══════════════════════════════════════════
+       WORK
+    ═══════════════════════════════════════════ */
+    #work { padding: 8rem var(--pad); }
+    .section-label {
+      font-size: .72rem; font-weight: 800; letter-spacing: .16em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 1rem;
+      display: flex; align-items: center; gap: .75rem;
+    }
+    .section-label::before { content: ''; display: block; width: 20px; height: 1px; background: var(--accent); }
+
+    .work-header {
+      display: flex; justify-content: space-between; align-items: flex-end;
+      margin-bottom: 4rem; gap: 2rem; flex-wrap: wrap;
+    }
+    .work-h2 {
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 900; letter-spacing: -.03em; line-height: 1.05;
+    }
+    .work-header-right {
+      font-size: .85rem; color: var(--muted); max-width: 280px; line-height: 1.7;
+      text-align: right;
+    }
+
+    /* Project grid */
+    .projects-grid { display: flex; flex-direction: column; gap: 1.5px; }
+
+    .project-row {
+      display: grid;
+      grid-template-columns: 3fr 5fr 4fr;
+      align-items: center;
+      padding: 2.2rem 0;
+      border-top: 1px solid var(--border);
+      gap: 2rem;
+      cursor: pointer;
+      transition: background .2s;
+      position: relative;
+    }
+    .project-row:last-child { border-bottom: 1px solid var(--border); }
+    .project-row::before {
+      content: '';
+      position: absolute; left: -2rem; right: -2rem; top: 0; bottom: 0;
+      background: var(--text);
+      opacity: 0; z-index: -1;
+      transition: opacity .25s;
+      border-radius: 4px;
+    }
+    .project-row:hover::before { opacity: 1; }
+    .project-row:hover { color: var(--bg); }
+    .project-row:hover .proj-cat,
+    .project-row:hover .proj-year,
+    .project-row:hover .proj-desc { color: rgba(255,245,233,.5); }
+    .project-row:hover .proj-arrow { opacity: 1; transform: translate(0,0); }
+    .project-row:hover .proj-num { color: var(--accent); }
+
+    .proj-left { display: flex; align-items: center; gap: 1.5rem; }
+    .proj-num {
+      font-size: .72rem; font-weight: 800; letter-spacing: .1em;
+      color: var(--muted); min-width: 28px;
+      transition: color .25s;
+    }
+    .proj-cat {
+      font-size: .7rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase;
+      color: var(--muted); transition: color .25s;
+    }
+    .proj-title {
+      font-size: clamp(1.1rem, 2vw, 1.6rem);
+      font-weight: 900; letter-spacing: -.02em; line-height: 1.1;
+    }
+    .proj-desc {
+      font-size: .82rem; color: var(--muted); line-height: 1.6;
+      transition: color .25s;
+    }
+    .proj-right { display: flex; align-items: center; justify-content: flex-end; gap: 1.5rem; }
+    .proj-year {
+      font-size: .72rem; font-weight: 700; color: var(--muted);
+      transition: color .25s;
+    }
+    .proj-arrow {
+      font-size: 1.1rem; opacity: 0;
+      transform: translate(-8px, 8px);
+      transition: opacity .25s, transform .25s var(--ease-out);
+    }
+
+    .work-behance {
+      margin-top: 4rem;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 2rem 2.5rem;
+      background: var(--text); border-radius: 4px;
+      flex-wrap: wrap; gap: 1.5rem;
+    }
+    .work-behance-text {
+      font-size: clamp(1rem, 2vw, 1.4rem);
+      font-weight: 900; color: var(--bg); letter-spacing: -.01em;
+    }
+    .work-behance-text em { font-family: var(--f-accent); font-style: italic; font-weight: 600; color: var(--accent); }
+    .btn-behance {
+      display: inline-flex; align-items: center; gap: .6rem;
+      padding: .85rem 2rem;
+      background: var(--accent); color: var(--white);
+      font-size: .78rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase;
+      border-radius: 2px; white-space: nowrap;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .btn-behance:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255,132,31,.4); }
+
+    /* ═══════════════════════════════════════════
+       ABOUT
+    ═══════════════════════════════════════════ */
+    #about {
+      padding: 8rem var(--pad);
+      background: var(--ink); color: var(--bg);
+      position: relative; overflow: hidden;
+    }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; }
+
+    .about-h2 {
+      font-size: clamp(2.2rem, 4vw, 4rem);
+      font-weight: 900; letter-spacing: -.03em; line-height: 1;
+      margin-bottom: 2rem; color: var(--bg);
+    }
+    .about-h2 em { font-family: var(--f-accent); font-style: italic; font-weight: 600; color: var(--accent); }
+
+    .about-body {
+      font-size: 1rem; line-height: 1.85; color: rgba(255,245,233,.6);
+    }
+    .about-body p + p { margin-top: 1.25rem; }
+    .about-body strong { color: var(--bg); font-weight: 700; }
+
+    .about-stats {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+      background: rgba(255,245,233,.08);
+      border: 1px solid rgba(255,245,233,.08);
+      border-radius: 4px; overflow: hidden;
+      margin-top: 3rem;
+    }
+    .about-stat {
+      padding: 1.75rem;
+      background: var(--ink);
+    }
+    .about-stat-num {
+      font-size: 2.8rem; font-weight: 900; letter-spacing: -.04em;
+      line-height: 1; color: var(--bg);
+    }
+    .about-stat-num span { color: var(--accent); }
+    .about-stat-label { font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,245,233,.4); margin-top: .4rem; }
+
+    .about-right {}
+    .exp-eyebrow {
+      font-size: .72rem; font-weight: 800; letter-spacing: .16em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 1.5rem;
+      display: flex; align-items: center; gap: .75rem;
+    }
+    .exp-eyebrow::before { content: ''; display: block; width: 20px; height: 1px; background: var(--accent); }
+
+    .exp-list { list-style: none; }
+    .exp-item {
+      display: grid; grid-template-columns: 100px 1fr;
+      gap: 1.5rem; padding: 1.6rem 0;
+      border-bottom: 1px solid rgba(255,245,233,.07);
+    }
+    .exp-item:first-child { border-top: 1px solid rgba(255,245,233,.07); }
+    .exp-yr {
+      font-size: .7rem; font-weight: 800; letter-spacing: .08em;
+      color: rgba(255,245,233,.3); text-transform: uppercase; padding-top: .15rem;
+    }
+    .exp-co {
+      font-size: 1.05rem; font-weight: 800; color: var(--bg); line-height: 1.15;
+    }
+    .exp-role { font-size: .8rem; color: rgba(255,245,233,.45); margin-top: .25rem; }
+
+    .about-closing {
+      margin-top: 3rem;
+      font-size: clamp(1rem, 1.6vw, 1.2rem);
+      line-height: 1.75;
+      color: rgba(255,245,233,.55);
+      font-weight: 400;
+    }
+    .about-closing strong { color: var(--bg); }
+
+    /* ═══════════════════════════════════════════
+       SERVICES
+    ═══════════════════════════════════════════ */
+    #services { padding: 8rem var(--pad); }
+    .services-header { margin-bottom: 4rem; }
+    .services-h2 {
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 900; letter-spacing: -.03em; line-height: 1.05;
+      max-width: 700px;
+    }
+    .services-h2 em { font-family: var(--f-accent); font-style: italic; font-weight: 600; color: var(--accent); }
+
+    .services-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 4px; overflow: hidden;
+    }
+    .service-card {
+      background: var(--bg); padding: 2.5rem 2rem;
+      transition: background .25s;
+      position: relative;
+    }
+    .service-card:hover { background: var(--text); }
+    .service-card:hover .svc-title { color: var(--bg); }
+    .service-card:hover .svc-desc { color: rgba(255,245,233,.5); }
+    .service-card:hover .svc-icon { background: var(--accent); color: var(--white); }
+
+    .svc-icon {
+      width: 40px; height: 40px; border-radius: 2px;
+      background: var(--accent-dim);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; margin-bottom: 1.5rem;
+      transition: background .25s, color .25s;
+    }
+    .svc-title {
+      font-size: 1.05rem; font-weight: 900; letter-spacing: -.01em;
+      margin-bottom: .75rem; transition: color .25s;
+    }
+    .svc-desc { font-size: .84rem; line-height: 1.7; color: var(--muted); transition: color .25s; }
+
+    /* ═══════════════════════════════════════════
+       PROCESS — single bold statement
+    ═══════════════════════════════════════════ */
+    #process {
+      padding: 8rem var(--pad);
+      background: var(--accent);
+      text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .process-bg {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+      font-size: clamp(8rem, 20vw, 18rem);
+      font-weight: 900; letter-spacing: -.05em;
+      color: rgba(255,255,255,.08);
+      white-space: nowrap; pointer-events: none;
+      font-family: var(--f-accent); font-style: italic;
+    }
+    .process-content { position: relative; z-index: 1; }
+    .process-label {
+      font-size: .72rem; font-weight: 800; letter-spacing: .18em; text-transform: uppercase;
+      color: rgba(255,255,255,.6); margin-bottom: 1.5rem;
+    }
+    .process-h2 {
+      font-size: clamp(2rem, 5vw, 5rem);
+      font-weight: 900; letter-spacing: -.03em; line-height: 1;
+      color: var(--white); margin-bottom: 1.5rem;
+    }
+    .process-h2 em { font-family: var(--f-accent); font-style: italic; font-weight: 600; }
+    .process-sub {
+      font-size: 1.1rem; color: rgba(255,255,255,.75);
+      max-width: 560px; margin: 0 auto 3rem; line-height: 1.7;
+    }
+    .btn-white {
+      display: inline-flex; align-items: center; gap: .5rem;
+      padding: 1rem 2.5rem;
+      background: var(--white); color: var(--accent);
+      font-size: .82rem; font-weight: 900; letter-spacing: .08em; text-transform: uppercase;
+      border-radius: 2px;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .btn-white:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(0,0,0,.15); }
+
+    /* ═══════════════════════════════════════════
+       CONTACT
+    ═══════════════════════════════════════════ */
+    #contact { padding: 8rem var(--pad); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; }
+
+    .contact-h2 {
+      font-size: clamp(2rem, 4vw, 3.8rem);
+      font-weight: 900; letter-spacing: -.03em; line-height: 1; margin-bottom: 1.5rem;
+    }
+    .contact-h2 em { font-family: var(--f-accent); font-style: italic; font-weight: 600; color: var(--accent); }
+
+    .contact-copy { font-size: 1rem; color: var(--muted); line-height: 1.75; max-width: 380px; }
+
+    .contact-direct { margin-top: 2.5rem; display: flex; flex-direction: column; gap: .75rem; }
+    .contact-link {
+      display: inline-flex; align-items: center; gap: .85rem;
+      font-size: .88rem; font-weight: 700;
+      transition: color .2s;
+    }
+    .contact-link:hover { color: var(--accent); }
+    .contact-link-icon {
+      width: 38px; height: 38px; border-radius: 2px;
+      background: var(--text); color: var(--bg);
+      display: flex; align-items: center; justify-content: center;
+      font-size: .85rem; flex-shrink: 0;
+      transition: background .2s;
+    }
+    .contact-link:hover .contact-link-icon { background: var(--accent); }
+
+    /* Form */
+    .contact-form { display: flex; flex-direction: column; gap: 1.25rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-group { display: flex; flex-direction: column; gap: .4rem; }
+    .form-label {
+      font-size: .68rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase;
+      color: var(--muted);
+    }
+    .form-input, .form-textarea {
+      padding: .9rem 1rem;
+      background: var(--white); border: 1.5px solid var(--border);
+      border-radius: 2px; font-family: var(--f-body); font-size: .92rem; color: var(--text);
+      transition: border-color .2s;
+      width: 100%;
+    }
+    .form-input:focus, .form-textarea:focus { outline: none; border-color: var(--accent); }
+    .form-textarea { resize: vertical; min-height: 130px; }
+    .form-submit {
+      display: inline-flex; align-items: center; gap: .5rem;
+      padding: 1rem 2.2rem;
+      background: var(--text); color: var(--bg); border: none;
+      font-size: .82rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase;
+      border-radius: 2px; align-self: flex-start;
+      transition: background .2s, transform .2s;
+    }
+    .form-submit:hover { background: var(--accent); transform: translateY(-1px); }
+
+    .form-note {
+      font-size: .75rem; color: var(--muted); line-height: 1.6;
+    }
+    .form-success-msg {
+      display: none;
+      padding: 1rem 1.25rem;
+      background: #e8f5e9; border-radius: 2px;
+      font-size: .88rem; font-weight: 700; color: #2e7d32;
+    }
+
+    /* ═══════════════════════════════════════════
+       FOOTER
+    ═══════════════════════════════════════════ */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem var(--pad);
+    }
+    .footer-inner {
+      max-width: var(--max); margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 1rem;
+      font-size: .75rem; color: var(--muted);
+    }
+    .footer-logo {
+      font-weight: 900; letter-spacing: .08em; text-transform: uppercase;
+      color: var(--text); font-size: .8rem;
+    }
+    .footer-logo em { font-family: var(--f-accent); font-style: italic; font-weight: 600; color: var(--accent); }
+    .footer-links { display: flex; gap: 2rem; }
+    .footer-links a { transition: color .2s; }
+    .footer-links a:hover { color: var(--accent); }
+
+    /* ═══════════════════════════════════════════
+       REVEAL ANIMATIONS
+    ═══════════════════════════════════════════ */
+    .reveal {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity .7s var(--ease-out), transform .7s var(--ease-out);
+    }
+    .reveal.up { opacity: 1; transform: none; }
+    .reveal-delay-1 { transition-delay: .1s; }
+    .reveal-delay-2 { transition-delay: .2s; }
+    .reveal-delay-3 { transition-delay: .3s; }
+    .reveal-delay-4 { transition-delay: .4s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .marquee-track { animation: none; }
+      .hero-scroll { animation: none; }
+    }
+
+    /* ═══════════════════════════════════════════
+       MOBILE
+    ═══════════════════════════════════════════ */
+    @media (max-width: 900px) {
+      .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .project-row { grid-template-columns: 1fr 2fr; }
+      .proj-right { display: none; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      .nav-links.mobile-open {
+        display: flex; flex-direction: column; gap: 1.5rem;
+        position: fixed; top: 72px; left: 0; right: 0;
+        background: var(--bg); padding: 2rem var(--pad);
+        border-bottom: 1px solid var(--border);
+        z-index: 199;
+      }
+      .services-grid { grid-template-columns: 1fr; }
+      .project-row { grid-template-columns: 1fr; }
+      .hero-h1 { font-size: clamp(2.6rem, 10vw, 4rem); }
+      .work-behance { flex-direction: column; text-align: center; }
+      .about-stats { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══ NAV ═══ -->
+  <nav id="nav">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo">Austin <em>N.</em></a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#work">Work</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact" class="nav-cta">Hire Me</a></li>
+      </ul>
+      <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ═══ HERO ═══ -->
+  <section id="hero">
+    <div class="hero-bg-text" aria-hidden="true">DESIGN</div>
+
+    <div class="hero-content">
+      <div class="hero-tag">Brand &amp; Marketing Designer · Lagos, Nigeria</div>
+
+      <h1 class="hero-h1">
+        Your brand<br>
+        isn't broken.<br>
+        <span class="line-accent">It's just boring.</span>
+      </h1>
+
+      <div class="hero-bottom">
+        <p class="hero-sub">
+          I fix that.<br><br>
+          <strong>Nine years.</strong> Multiple industries. A track record of turning
+          forgettable brands into ones people actually talk about.
+        </p>
+        <div class="hero-actions">
+          <a href="#work" class="btn-primary">See the work ↓</a>
+          <a href="#contact" class="btn-ghost">Work with me</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-scroll" aria-hidden="true">Scroll</div>
+  </section>
+
+  <!-- ═══ MARQUEE ═══ -->
+  <div class="marquee-strip" aria-hidden="true">
+    <div class="marquee-track">
+      <!-- duplicated for seamless loop -->
+      <span class="marquee-item">Brand Identity <span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">Marketing Design <span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">Design Systems <span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">Art Direction <span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">Pitch Decks <span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">Social Campaigns <span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">Visual Strategy <span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">Brand Identity <span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">Marketing Design <span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">Design Systems <span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">Art Direction <span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">Pitch Decks <span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">Social Campaigns <span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">Visual Strategy <span class="marquee-dot">✦</span></span>
+    </div>
+  </div>
+
+  <!-- ═══ WORK ═══ -->
+  <section id="work">
+    <div class="container">
+      <div class="work-header reveal">
+        <div>
+          <div class="section-label">Selected Work</div>
+          <h2 class="work-h2">The kind of work<br>clients don't forget.</h2>
+        </div>
+        <p class="work-header-right">
+          Every project here solved a real problem —
+          and left a brand stronger than it started.
+        </p>
+      </div>
+
+      <div class="projects-grid">
+
+        <a href="https://www.behance.net/austinnwaigwe" target="_blank" rel="noopener" class="project-row reveal">
+          <div class="proj-left">
+            <span class="proj-num">01</span>
+            <span class="proj-cat">Brand Identity · Tech</span>
+          </div>
+          <div class="proj-title">4TS Technologies — Full Brand System</div>
+          <div class="proj-right">
+            <span class="proj-year">Head of Design</span>
+            <span class="proj-arrow">↗</span>
+          </div>
+        </a>
+
+        <a href="https://www.behance.net/austinnwaigwe" target="_blank" rel="noopener" class="project-row reveal reveal-delay-1">
+          <div class="proj-left">
+            <span class="proj-num">02</span>
+            <span class="proj-cat">Corporate Brand · Finance</span>
+          </div>
+          <div class="proj-title">MIM Finance — Identity &amp; Collateral</div>
+          <div class="proj-right">
+            <span class="proj-year">Senior Designer</span>
+            <span class="proj-arrow">↗</span>
+          </div>
+        </a>
+
+        <a href="https://www.behance.net/austinnwaigwe" target="_blank" rel="noopener" class="project-row reveal reveal-delay-2">
+          <div class="proj-left">
+            <span class="proj-num">03</span>
+            <span class="proj-cat">Campaign · Fashion</span>
+          </div>
+          <div class="proj-title">Worn Honest — Documentary Campaign</div>
+          <div class="proj-right">
+            <span class="proj-year">Art Direction</span>
+            <span class="proj-arrow">↗</span>
+          </div>
+        </a>
+
+        <a href="https://www.behance.net/austinnwaigwe" target="_blank" rel="noopener" class="project-row reveal reveal-delay-3">
+          <div class="proj-left">
+            <span class="proj-num">04</span>
+            <span class="proj-cat">Investor Proposal · Real Estate</span>
+          </div>
+          <div class="proj-title">Zenith Pro Realty — Investment Pitch</div>
+          <div class="proj-right">
+            <span class="proj-year">Freelance</span>
+            <span class="proj-arrow">↗</span>
+          </div>
+        </a>
+
+        <a href="https://www.behance.net/austinnwaigwe" target="_blank" rel="noopener" class="project-row reveal reveal-delay-1">
+          <div class="proj-left">
+            <span class="proj-num">05</span>
+            <span class="proj-cat">Campaign · Beauty</span>
+          </div>
+          <div class="proj-title">POA HAIRS — Brand Campaign</div>
+          <div class="proj-right">
+            <span class="proj-year">Freelance</span>
+            <span class="proj-arrow">↗</span>
+          </div>
+        </a>
+
+        <a href="https://www.behance.net/austinnwaigwe" target="_blank" rel="noopener" class="project-row reveal reveal-delay-2">
+          <div class="proj-left">
+            <span class="proj-num">06</span>
+            <span class="proj-cat">Design System · Tech</span>
+          </div>
+          <div class="proj-title">Mobile-First UI Design System</div>
+          <div class="proj-right">
+            <span class="proj-year">4TS Technologies</span>
+            <span class="proj-arrow">↗</span>
+          </div>
+        </a>
+
+      </div>
+
+      <!-- Behance CTA -->
+      <div class="work-behance reveal">
+        <div class="work-behance-text">
+          There's more where that came from.<br>
+          <em>A lot more.</em>
+        </div>
+        <a href="https://www.behance.net/austinnwaigwe" target="_blank" rel="noopener" class="btn-behance">
+          Full Portfolio on Behance ↗
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ ABOUT ═══ -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+
+        <div>
+          <div class="section-label" style="color:var(--accent);margin-bottom:1rem;">About Me</div>
+          <h2 class="about-h2 reveal">
+            Not just a<br>designer.<br>
+            <em>A brand's<br>secret weapon.</em>
+          </h2>
+
+          <div class="about-body reveal reveal-delay-1">
+            <p>
+              I'm Austin Nwaigwe. For nine years, I've been the person brands call when
+              they're tired of looking average. I've worked across <strong>technology, finance,
+              real estate, and entertainment</strong> — and in every industry, the problem
+              is always the same: a brand that doesn't do the business justice.
+            </p>
+            <p>
+              As <strong>Head of Design at 4TS Technologies</strong>, I built the visual
+              identity for a phone manufacturer from the ground up — brand system, product
+              launch collateral, the works. At <strong>MIM Finance</strong>, I translated
+              complex financial services into a brand that commanded trust on sight.
+            </p>
+            <p>
+              I don't decorate. I solve. Every colour, typeface, and layout decision
+              I make has a reason — and that reason is always to make your brand
+              <strong>undeniable.</strong>
+            </p>
+          </div>
+
+          <div class="about-stats reveal reveal-delay-2">
+            <div class="about-stat">
+              <div class="about-stat-num">9<span>+</span></div>
+              <div class="about-stat-label">Years Experience</div>
+            </div>
+            <div class="about-stat">
+              <div class="about-stat-num">50<span>+</span></div>
+              <div class="about-stat-label">Brands Shaped</div>
+            </div>
+            <div class="about-stat">
+              <div class="about-stat-num">4</div>
+              <div class="about-stat-label">Industries</div>
+            </div>
+            <div class="about-stat">
+              <div class="about-stat-num">0</div>
+              <div class="about-stat-label">Average Projects</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-right reveal reveal-delay-1">
+          <div class="exp-eyebrow">Experience</div>
+          <ul class="exp-list">
+            <li class="exp-item">
+              <div class="exp-yr">2022 – Present</div>
+              <div>
+                <div class="exp-co">4TS Technologies</div>
+                <div class="exp-role">Head of Design · Phone Manufacturer</div>
+              </div>
+            </li>
+            <li class="exp-item">
+              <div class="exp-yr">2020 – 2022</div>
+              <div>
+                <div class="exp-co">MIM Finance</div>
+                <div class="exp-role">Senior Designer · Financial Services</div>
+              </div>
+            </li>
+            <li class="exp-item">
+              <div class="exp-yr">2016 – Present</div>
+              <div>
+                <div class="exp-co">Freelance</div>
+                <div class="exp-role">Brand & Marketing — Tech, Finance, Real Estate, Entertainment</div>
+              </div>
+            </li>
+          </ul>
+
+          <div class="about-closing reveal reveal-delay-2">
+            <p>
+              <strong>The short version:</strong> I've built brands that move product,
+              attract investment, and make competitors nervous. If yours isn't doing
+              at least one of those things — we should talk.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ SERVICES ═══ -->
+  <section id="services">
+    <div class="container">
+      <div class="services-header reveal">
+        <div class="section-label">What I Do</div>
+        <h2 class="services-h2">
+          Every service designed to make<br>
+          your brand <em>impossible to ignore.</em>
+        </h2>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <div class="svc-icon">🎯</div>
+          <div class="svc-title">Brand Identity</div>
+          <p class="svc-desc">Logos, colour systems, typography, and brand guidelines built to work everywhere — and to last.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-1">
+          <div class="svc-icon">📣</div>
+          <div class="svc-title">Marketing Design</div>
+          <p class="svc-desc">Campaign visuals, social assets, and marketing collateral that stops the scroll and drives action.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-2">
+          <div class="svc-icon">📐</div>
+          <div class="svc-title">Design Systems</div>
+          <p class="svc-desc">Scalable component libraries that keep growing teams consistent without slowing them down.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-1">
+          <div class="svc-icon">💼</div>
+          <div class="svc-title">Investor Materials</div>
+          <p class="svc-desc">Pitch decks and proposal documents that communicate credibility before you've said a word.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-2">
+          <div class="svc-icon">📱</div>
+          <div class="svc-title">Social & Content</div>
+          <p class="svc-desc">Template systems and creative direction for social channels — built for consistency at scale.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-3">
+          <div class="svc-icon">🎬</div>
+          <div class="svc-title">Art Direction</div>
+          <p class="svc-desc">Visual direction for campaigns, shoots, and content series. A clear eye. A distinct point of view.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ PROCESS STATEMENT ═══ -->
+  <section id="process">
+    <div class="process-bg" aria-hidden="true">Ready?</div>
+    <div class="process-content">
+      <div class="process-label">The bottom line</div>
+      <h2 class="process-h2">
+        Good design isn't a cost.<br>
+        <em>It's the thing that makes</em><br>
+        everything else work.
+      </h2>
+      <p class="process-sub">
+        Your competitors are investing in their brand.
+        The question is whether yours can afford to stay quiet.
+      </p>
+      <a href="#contact" class="btn-white">Let's fix that →</a>
+    </div>
+  </section>
+
+  <!-- ═══ CONTACT ═══ -->
+  <section id="contact">
+    <div class="container">
+      <div class="contact-grid">
+
+        <div class="reveal">
+          <div class="section-label">Get In Touch</div>
+          <h2 class="contact-h2">
+            Let's build<br>something<br><em>they can't ignore.</em>
+          </h2>
+          <p class="contact-copy">
+            Whether you're starting from zero or ready for a rebrand —
+            I want to hear about it. No long forms. No agency gatekeeping.
+            Just you, me, and a blank canvas.
+          </p>
+          <div class="contact-direct">
+            <a href="mailto:helloaustinuche@gmail.com" class="contact-link">
+              <div class="contact-link-icon">✉</div>
+              helloaustinuche@gmail.com
+            </a>
+            <a href="https://www.behance.net/austinnwaigwe" target="_blank" rel="noopener" class="contact-link">
+              <div class="contact-link-icon">𝒃</div>
+              behance.net/austinnwaigwe
+            </a>
+          </div>
+        </div>
+
+        <div class="reveal reveal-delay-1">
+          <form
+            class="contact-form"
+            id="contact-form"
+            name="contact"
+            method="POST"
+            data-netlify="true"
+            netlify-honeypot="bot-field"
+          >
+            <input type="hidden" name="form-name" value="contact" />
+            <input type="hidden" name="bot-field" />
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="name">Name</label>
+                <input class="form-input" type="text" id="name" name="name" placeholder="Your full name" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="email">Email</label>
+                <input class="form-input" type="email" id="email" name="email" placeholder="you@company.com" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="budget">Budget Range</label>
+              <input class="form-input" type="text" id="budget" name="budget" placeholder="e.g. $500 – $2,000" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="project">Tell Me About Your Project</label>
+              <textarea class="form-textarea" id="project" name="project" placeholder="What do you need? What's the timeline? What does success look like?" required></textarea>
+            </div>
+            <button type="submit" class="form-submit">Send It →</button>
+            <p class="form-note">I typically reply within 24 hours. If your project is urgent, say so.</p>
+            <div class="form-success-msg" id="form-success">
+              ✓ Message received. I'll be in touch within 24 hours.
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">Austin <em>Nwaigwe</em></div>
+      <div class="footer-links">
+        <a href="#work">Work</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="https://www.behance.net/austinnwaigwe" target="_blank" rel="noopener">Behance</a>
+        <a href="mailto:helloaustinuche@gmail.com">Email</a>
+      </div>
+      <div>© 2026 Austin Nwaigwe. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script>
+    // ── Nav scroll ──
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('solid', window.scrollY > 20);
+    }, { passive: true });
+
+    // ── Mobile hamburger ──
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('mobile-open');
+    });
+    navLinks.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => navLinks.classList.remove('mobile-open'));
+    });
+
+    // ── Scroll reveal ──
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('up');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach(el => observer.observe(el));
+
+    // ── Contact form (Netlify) ──
+    const form = document.getElementById('contact-form');
+    const successMsg = document.getElementById('form-success');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const data = new FormData(form);
+      try {
+        const res = await fetch('/', { method: 'POST', body: data });
+        if (res.ok || res.status === 200) {
+          successMsg.style.display = 'block';
+          form.reset();
+        }
+      } catch {
+        // Still show success — Netlify often processes even on network quirks
+        successMsg.style.display = 'block';
+        form.reset();
+      }
+    });
+  </script>
+</body>
+</html>

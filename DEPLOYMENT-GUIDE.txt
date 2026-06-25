@@ -1,0 +1,154 @@
+# HOW TO GET YOUR PORTFOLIO LIVE
+## A step-by-step guide for Austin Nwaigwe
+### Written for someone who has never done this before. Every step counts.
+
+---
+
+## WHAT YOU'LL NEED
+- A computer (laptop or desktop)
+- About 20 minutes
+- Two free accounts you'll create below
+
+---
+
+## PART 1 — CREATE YOUR TWO FREE ACCOUNTS
+
+### Step 1: Create a GitHub account
+GitHub is where your website files will be stored.
+Think of it like Google Drive, but specifically for websites.
+
+1. Go to: https://github.com
+2. Click "Sign up"
+3. Enter your email, create a password, choose a username
+   (Suggestion: austinnwaigwe or austinndesign)
+4. Complete the verification and confirm your email
+5. You're in. Keep this tab open.
+
+### Step 2: Create a Netlify account
+Netlify is what puts your website on the internet.
+
+1. Go to: https://netlify.com
+2. Click "Sign up"
+3. Choose "Sign up with GitHub" — this connects both accounts automatically
+4. Authorize Netlify when it asks
+5. You're in. Keep this tab open too.
+
+---
+
+## PART 2 — PUT YOUR FILES ON GITHUB
+
+### Step 3: Create a new repository on GitHub
+A "repository" (or "repo") is just a folder for your website.
+
+1. On GitHub, click the green "New" button (top left)
+2. Repository name: type  austin-portfolio
+3. Make sure "Public" is selected
+4. Check the box that says "Add a README file"
+5. Click the green "Create repository" button
+6. You'll see a page with your new empty repo
+
+### Step 4: Upload your portfolio files
+1. On your repo page, click "Add file" → "Upload files"
+2. Open the austin-portfolio folder you downloaded from Claude
+3. Select ALL the files and folders inside it (Ctrl+A or Cmd+A)
+4. Drag them into the GitHub upload area
+5. Scroll down, click "Commit changes"
+6. Wait for the upload to finish (30–60 seconds)
+7. You should now see all your files listed in the repo ✓
+
+---
+
+## PART 3 — CONNECT GITHUB TO NETLIFY
+
+### Step 5: Deploy on Netlify
+1. Go to your Netlify dashboard: https://app.netlify.com
+2. Click "Add new site" → "Import an existing project"
+3. Click "GitHub"
+4. Find and click on "austin-portfolio" in the list
+5. Leave all the settings as they are
+6. Click "Deploy site"
+7. Netlify will build your site — takes about 1 minute
+8. You'll get a live URL like: magical-design-123456.netlify.app
+
+### Step 6: Give yourself a better URL (optional but recommended)
+1. On your site dashboard, click "Site settings"
+2. Click "Change site name"
+3. Type: austinnwaigwe  (or whatever you prefer)
+4. Your new URL: austinnwaigwe.netlify.app ✓
+
+---
+
+## PART 4 — SET UP YOUR ADMIN PANEL (to upload future work)
+
+### Step 7: Enable Netlify Identity
+This is what lets you log into your admin panel securely.
+
+1. On your Netlify site dashboard, click "Integrations" in the top menu
+2. Search for "Identity" and click it
+3. Click "Enable Identity"
+4. Scroll down to "Registration" → change it to "Invite only"
+   (This means only you can log in)
+5. Scroll down to "Git Gateway" → click "Enable Git Gateway"
+
+### Step 8: Invite yourself
+1. Still in Identity settings, click "Invite users"
+2. Enter YOUR email address
+3. Check your email — you'll get an invite
+4. Click the link in the email and set a password
+5. That password is what you'll use to log into /admin
+
+### Step 9: Log into your admin panel
+1. Go to: https://austinnwaigwe.netlify.app/admin
+   (replace "austinnwaigwe" with your actual site name)
+2. Log in with your email and password
+3. You'll see a panel that says "Projects" on the left
+4. Click "New Project" to add your first piece of work
+5. Fill in the title, category, upload your image, add a description
+6. Click "Publish" — your site updates automatically ✓
+
+---
+
+## YOU'RE LIVE. HERE'S WHAT YOU NOW HAVE:
+
+✓ A professional portfolio website at YOUR Netlify URL
+✓ An admin panel at /admin to upload new work anytime
+✓ A working contact form — messages go straight to your Netlify dashboard
+✓ A link to your Behance for the full portfolio
+
+---
+
+## ADDING YOUR REAL WORK IMAGES
+
+Right now the site shows your project titles as a list.
+To add actual images:
+
+1. Log into /admin
+2. Click "Projects"
+3. Click on a project (e.g. "4TS Technologies")
+4. Upload your project image under "Cover Image"
+5. Add more images under "Gallery Images" if you want
+6. Click "Publish"
+
+The site will update within 1–2 minutes.
+
+---
+
+## CONNECTING A CUSTOM DOMAIN (e.g. austinnwaigwe.com)
+
+When you're ready to get your own domain name:
+1. Buy a domain from Namecheap.com or Google Domains (usually $10–$15/year)
+2. In Netlify: Site settings → Domain management → Add custom domain
+3. Follow the instructions — Netlify walks you through it step by step
+4. Your site will be live at your own domain within 24 hours
+
+---
+
+## NEED HELP?
+
+If anything goes wrong, take a screenshot and send it to Claude.
+Describe what step you're on and what the screen is showing.
+Every problem has a fix.
+
+---
+
+Built by Claude for Austin Nwaigwe | helloaustinuche@gmail.com
